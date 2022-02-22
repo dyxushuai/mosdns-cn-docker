@@ -5,20 +5,20 @@ ARG REPOSITORY
 
 WORKDIR /root
 RUN apk add --update git \
-	&& git clone https://github.com/${REPOSITORY} mosdns \
-	&& cd ./mosdns \
+	&& git clone https://github.com/${REPOSITORY} mosdns-cn \
+	&& cd ./mosdns-cn \
 	&& git fetch --all --tags \
 	&& git checkout tags/${TAG} \
-	&& go build -ldflags "-s -w -X main.version=${TAG}" -trimpath -o mosdns
+	&& go build -ldflags "-s -w -X main.version=${TAG}" -trimpath -o mosdns-cn
 
 FROM --platform=${TARGETPLATFORM} alpine:latest
-LABEL maintainer="IrineSistiana <github.com/IrineSistiana>"
+LABEL maintainer="dyxushuai <github.com/dyxushuai>"
 
-COPY --from=builder /root/mosdns/mosdns /usr/bin/
+COPY --from=builder /root/mosdns-cn/mosdns-cn /usr/bin/
 
 RUN apk add --no-cache ca-certificates \
-	&& mkdir /etc/mosdns
+	&& mkdir /etc/mosdns-cn
 
-VOLUME /etc/mosdns
+VOLUME /etc/mosdns-cn
 EXPOSE 53/udp 53/tcp
-CMD /usr/bin/mosdns -dir /etc/mosdns
+CMD /usr/bin/mosdns-cn -dir /etc/mosdns-cn

@@ -1,4 +1,4 @@
-name: Release mosdns docker
+name: Release mosdns-cn docker
 
 on:
   push:
@@ -36,9 +36,9 @@ jobs:
         with:
           build-args: |
             TAG=${{ env.TAG }}
-            REPOSITORY=IrineSistiana/mosdns
+            REPOSITORY=IrineSistiana/mosdns-cn
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/mosdns:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/mosdns:${{ env.TAG }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/mosdns-cn:latest
+            ${{ secrets.DOCKERHUB_USERNAME }}/mosdns-cn:${{ env.TAG }}

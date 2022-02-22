@@ -1,5 +1,5 @@
 # mosdns docker
 
-Docker build for mosdns
+Docker build for mosdns-cn
 
-https://hub.docker.com/r/irinesistiana/mosdns
+https://hub.docker.com/r/xuss/mosdns-cn
