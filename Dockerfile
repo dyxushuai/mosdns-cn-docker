@@ -21,4 +21,4 @@ RUN apk add --no-cache ca-certificates \
 
 VOLUME /etc/mosdns-cn
 EXPOSE 53/udp 53/tcp
-CMD /usr/bin/mosdns-cn -dir /etc/mosdns-cn
+CMD /usr/bin/mosdns-cn --dir /etc/mosdns-cn
